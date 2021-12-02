@@ -20,7 +20,8 @@ module.exports = {
     },
     mode: process.env.NODE_ENV,
     devServer: {
-        static: BUILD_DIR_PATH
+        static: BUILD_DIR_PATH,
+        historyApiFallback: true
     },
     optimization: {
         splitChunks: {
@@ -66,5 +67,6 @@ module.exports = {
         } ),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
-    ]
+    ],
+    "devtool": 'source-map'
 }

@@ -1,0 +1,12 @@
+.ui.icon.fluid.input{
+    margin-top: 10px;
+}
+
+.searchInput{
+    margin-top: 10px;
+}
+
+.searchResult__content{
+    display: flex;
+    justify-content: space-between;
+}
