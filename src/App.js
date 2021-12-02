@@ -1,46 +1,31 @@
-import React, { Component } from 'react'
-import youtubeApi from './api/youtubeApi';
+import React, { useEffect, useState } from 'react'
 import SearchBar from './components/SearchBar'
 import VideoDetail from './components/VideoDetail';
 import VideoList from './components/VideoList';
+import useVideo from './hooks/useVideo';
 
-export default class App extends Component {
+const App = () => {
 
-    state = { videos: [], selectedVideo: null };
+    const [ videos, fetchVideos ] = useVideo( 'Reactjs Conference' );
+    const [ selectedVideo, setSelectedVideo ] = useState( null );
 
-    componentDidMount() {
-        this.onSubmitHandler( 'Reactjs Conference' );
-    }
+    useEffect( () => {
+        setSelectedVideo( videos[ 0 ] );
+    }, [ videos ] )
 
-    onSubmitHandler = async ( data ) => {
-        const result = await youtubeApi.get( '/search', {
-            params: {
-                q: data
-            }
-        } );
-
-        this.setState( { videos: result.data.items, selectedVideo: result.data.items[ 0 ] } );
-    };
-
-    onVideoListItemClick = video => {
-        this.setState( {
-            selectedVideo: video
-        } )
-    };
-
-    render () {
-        return (
-            <div className="ui container" style={ { marginTop: '10px' } }>
-                <SearchBar onSubmit={ this.onSubmitHandler } />
-                <div className="ui grid">
-                    <div className="eleven wide column">
-                        <VideoDetail video={ this.state.selectedVideo } />
-                    </div>
-                    <div className="five wide column">
-                        <VideoList videos={ this.state.videos } onVideoListItemClick={ this.onVideoListItemClick } />
-                    </div>
+    return (
+        <div className="ui container" style={ { marginTop: '10px' } }>
+            <SearchBar onSubmit={ fetchVideos } />
+            <div className="ui grid">
+                <div className="eleven wide column">
+                    <VideoDetail video={ selectedVideo } />
+                </div>
+                <div className="five wide column">
+                    <VideoList videos={ videos } onVideoListItemClick={ setSelectedVideo } />
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
+
+export default App;
