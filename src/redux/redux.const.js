@@ -1,0 +1,4 @@
+export const ACTIONS_CONST = {
+    FETCH_POST: 'FETCH_POST',
+    FETCH_USER: 'FETCH_USER'
+}
