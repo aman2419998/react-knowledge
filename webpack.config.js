@@ -16,11 +16,13 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: '[name].[contenthash].js',
-        path: BUILD_DIR_PATH
+        path: BUILD_DIR_PATH,
+        publicPath: '/'
     },
     mode: process.env.NODE_ENV,
     devServer: {
-        static: BUILD_DIR_PATH
+        static: BUILD_DIR_PATH,
+        historyApiFallback: true
     },
     optimization: {
         splitChunks: {
@@ -66,5 +68,6 @@ module.exports = {
         } ),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
-    ]
+    ],
+    devtool: "source-map"
 }
