@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve --open --hot",
     "build-dev": "webpack",
-    "build-prod": "NODE_ENV=production webpack"
+    "build-prod": "NODE_ENV=production webpack",
+    "json-server": "json-server -p 3001 -w src/jsons/db.json"
   },
   "keywords": [],
   "author": "",
@@ -30,11 +31,14 @@
   "dependencies": {
     "@babel/runtime": "^7.16.3",
     "axios": "^0.24.0",
+    "json-server": "^0.17.0",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "redux": "^4.1.2",
-    "redux-form": "^8.3.8"
+    "redux-form": "^8.3.8",
+    "redux-thunk": "^2.4.1"
   }
 }
