@@ -2,7 +2,7 @@ import { map } from 'lodash';
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { fetchStreams, deleteStream } from '../../redux/actions'
+import { fetchStreams } from '../../redux/actions'
 
 const StreamList = ( props ) => {
 
@@ -37,9 +37,9 @@ const StreamList = ( props ) => {
                 <Link to={ `/stream/edit/${ id }` } className="ui purple button" >
                     Edit
                 </Link>
-                <button onClick={ () => props.deleteStream( id ) } className="ui red button" >
+                <Link to={ `/stream/delete/${ id }` } className="ui red button" >
                     Delete
-                </button>
+                </Link>
             </div> : null
         );
     }
@@ -62,8 +62,7 @@ const mapStateToProps = ( state ) => {
 }
 
 const mapActionToProps = {
-    fetchStreams,
-    deleteStream
+    fetchStreams
 }
 
 export default connect( mapStateToProps, mapActionToProps )( StreamList )
