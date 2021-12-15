@@ -16,7 +16,7 @@ const StreamList = ( props ) => {
                 <RenderEditDeleteButton id={ data.id } userId={ data.userId } />
                 <i className="large camera middle aligned icon"></i>
                 <div className="content">
-                    <a className="header"> { data.title } </a>
+                    <Link to={ `stream/show/${ data.id }` } className="header"> { data.title } </Link>
                     <div className="description"> { data.description } </div>
                 </div>
             </div>
